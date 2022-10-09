@@ -36,7 +36,7 @@ class Server {
   }
 
   routes() {
-    this.app.use("/", router);
+    this.app.use("/api", router);
   }
 
   listen() {
