@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { registerUser, loginUser } from "../controllers/auth";
 import checkAuth from "../middleware/auth";
+import validateUser from "../validators/auth";
 
 const router = Router();
 
@@ -19,12 +20,12 @@ const router = Router();
  *              schema:
  *                  $ref: "#components/schemas/user"
  *    responses:
- *      '200': 
+ *      '200':
  *        description: registro exitoso
  *    security:
  *     - bearerAuth: []
  */
-router.post("/register", checkAuth, registerUser);
+router.post("/register", checkAuth, validateUser, registerUser);
 
 /**
  * Post track
@@ -41,7 +42,7 @@ router.post("/register", checkAuth, registerUser);
  *              schema:
  *                  $ref: "#components/schemas/login"
  *    responses:
- *      '200': 
+ *      '200':
  *        description: login exitoso
  *    security:
  *      -api_key: []
