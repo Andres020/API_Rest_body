@@ -9,14 +9,14 @@ COPY package*.json ./
 COPY tsconfig.json ./
 
 ## install only the packages defined in the package-lock.json (faster than the normal npm install)
+RUN npm install typescript -g 
+RUN npm install ts-node    -g 
+RUN npm install nodemon -g
 RUN npm install
-RUN npm install -g ts-node   
-RUN npm install -g typescript
-
-
 
 COPY . .
+RUN tsc 
 
 # Run 'npm run dev' when the container starts.
  
-CMD ["npm","run","dev"]
+CMD ["npm","start"]
